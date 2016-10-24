@@ -1,0 +1,132 @@
+\documentclass{beamer}
+%
+% Choose how your presentation looks.
+%
+% For more themes, color themes and font themes, see:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+%
+\mode<presentation>
+{
+  \usetheme{default}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{default}  % or try serif, structurebold, ...
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+} 
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+
+\title[Your Short Title]{\LaTeX\ \texttt{beamer}\ template}
+\author{You}
+\institute{Where You're From}
+\date{Date of Presentation}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Uncomment these lines for an automatically generated outline.
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+\section{Why cross-entropy ?}
+	\begin{frame}{Why cross-entropy?}
+		\begin{itemize}
+			\item{Mean Square Error}
+				\begin{align*}
+					&C=\frac{(y-a)^2}{2} \\
+					&\frac{\partial C}{\partial w} = (a-y) \sigma'(z)x
+				\end{align*}
+			\item{Cross-entropy}
+				\begin{align*}
+					&C=y \ln a+(1-y)\ln(1-a)
+					&\frac{\partial C}{\partial w}=x(\sigma(z)-y)
+				\end{align*}
+		\end{itemize}
+	\end{frame}
+\section{An overview of gradient descent optimization algorithms.}
+\begin{frame}{Vanilla Batch, SGD and mini-Batch}
+	\begin{itemize}
+		\item{Batch gradient descent}
+			\begin{align*}
+				\theta=\theta - \eta \nabla_\theta J(\theta)
+			\end{align*}
+		\item{Stochastic gradient descent}
+			\begin{align*}
+				\theta=\theta - \eta \nabla_\theta J(\theta;x^{(i)};y^{i})
+			\end{align*}
+		\item{Mini-batch gradient descent}
+			\begin{align*}
+				\theta=\theta - \eta \nabla_\theta J(\theta;x^{(i;i+n)};y^{(i;i+n)})
+			\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Momentum, NAG, ADAM}
+	\begin{itemize}
+		\item{Momentum}
+			\begin{align*}
+				v_t=\gamma v_{t-1} + \eta \nabla_\theta J(\theta) \\
+				\theta = \theta - v_t
+			\end{align*}
+		\item{NAG}
+			\begin{align*}
+				v_t=\gamma v_{t-1} + \eta \nabla_\theta J(\theta - \gamma v_{t-1})  \\
+				\theta = \theta - v_t
+			\end{align*}
+		\item{ADAM}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Others}
+	\begin{itemize}
+		\item{early stopping}
+		\item{learning rate decay}
+	\end{itemize}
+\end{frame}
+
+
+\section{A gentle and intuitive introduction to LSTM.}
+\begin{frame}{LSTM}
+		\begin{itemize}
+			\item{RNN}
+			$$H^{l-1}_t, H^{l}_{t-1} \longrightarrow H^l_t$$
+			\item{LSTM}
+			\begin{align*}
+				&H^{l-1}_t,H^l_{t-1},C^l_{t-1} \longrightarrow H^l_t,C^l_t
+				\\
+				&\begin{pmatrix}
+					i\\
+					f\\
+					o\\
+					g
+				\end{pmatrix} = 
+				\begin{pmatrix}
+					sigm\\
+					sigm\\
+					sigm\\
+					tanh
+				\end{pmatrix}
+				W_{2n,4n} 
+				\begin{pmatrix}
+					h^{l-1}_t\\
+					h^l_{t-1}
+				\end{pmatrix}
+			\end{align*}
+		\end{itemize}
+\end{frame}
+\section{Learning Material}
+\begin{frame}{Learning Material}
+	\begin{itemize}
+		\item{Reddit}
+		\item{Github}
+		\item{52ml}
+		\item{gitxiv}
+		\item{blog}
+	\end{itemize}
+\end{frame}
+\end{document}
